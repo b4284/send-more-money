@@ -13,6 +13,7 @@
 
 在 i3-2310U 上測試，十次平均。
 
-* Racket: 1.687s
 * C (gcc -O2): 0.130s
+* Guile Scheme: 6.523s
 * Haskell: 1.070s
+* Racket: 1.687s
