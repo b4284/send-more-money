@@ -2,6 +2,7 @@
 
 (require srfi/1)
 (require racket/match)
+(require racket/future)
 
 (define 0-9 (iota 10))
 
@@ -58,6 +59,7 @@
               (perm-2 (append (reverse left) t) (cons h a) f)
               (M (cons h left) t))))))
 
+
 (define (perm-3 l a f c)
   (if (zero? c)
       (f (reverse a))
@@ -67,6 +69,18 @@
             (let ((h (car right)) (t (cdr right)))
               (perm-3 (append (reverse left) t) (cons h a) f (sub1 c))
               (M (cons h left) t))))))
+
+(define (perm-3-b l a f c)
+  (if (zero? c)
+      (f (reverse a))
+      (let M ((left '()) (right l) (ft '()))
+        (if (null? right)
+            (for-each touch ft)
+            (let ((h (car right)) (t (cdr right)))
+              (M (cons h left) t
+                 (cons (future
+                        (lambda () (perm-3 (append (reverse left) t)
+                                       (cons h a) f (sub1 c)))) ft)))))))
 
 (define 0-9perms (perm '(1 2 3 4)))
 
