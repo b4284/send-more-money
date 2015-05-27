@@ -13,6 +13,6 @@
 
 在 i3-2310U 上測試，十次平均。
 
-* send-more-money.rkt: 1.687s
-* send-more-money.c
-    * -O2: 0.130s
+* Racket: 1.687s
+* C (gcc -O2): 0.130s
+* Haskell: 1.070s
