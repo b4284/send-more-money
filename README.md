@@ -17,4 +17,4 @@
 * Guile Scheme: 6.523s
 * Haskell: 1.070s
 * Racket: 1.687s
-* SQL (PostgreSQL): 4.911s
+* SQL (PostgreSQL): 5.391s
